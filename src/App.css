@@ -4,24 +4,26 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #efdcab !important;
+    background-color: black !important;
+    background-image: url("./assets/BackgroundImage.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
 }
 .body {
-    background-color: #f2f6d0 !important;
+    background-color: rgba(0, 0, 0, 0.856);
     text-align: center;
-    margin: 200px;
-    padding: 20px;
+    color: rgb(255, 255, 255);
+    margin: 20px;
+    padding: px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.29);
+    border-radius: 1em;
+
 }
-.poster:hover {
-    transition: 0.3s;
-    transform: scale(1.1);
+.movieGrid{
+    margin: 20px;
 }
-.poster {
-    transition: 0.3s;
-    transform: scale(1);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.29);
-}
+
 @keyframes logo-spin {
     from {
         transform: rotate(0deg);

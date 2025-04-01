@@ -1,0 +1,17 @@
+.NavigationBar{
+    background-color: black;
+    border-bottom: 1px solid white;
+    box-shadow: black 0 0 20px;
+    
+}
+.NavigationBar *{
+    color: white !important;
+}
+.searchInput{
+    background-color: #333 !important;
+    border: 0 !important;
+    
+}
+.searchInput::placeholder{
+    color: #c26f89 !important;
+}

@@ -1,0 +1,14 @@
+.gridHeader{
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 0 0 1em 1em;
+    transition: 0.3s;
+    height: 100px;
+}
+.gridHeader .col h1{
+    text-shadow: 0 0 25px black;
+}
+.opener{
+    transition: 3ms;
+    height: 300px;
+}
