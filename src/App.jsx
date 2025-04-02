@@ -35,17 +35,11 @@ function App() {
         <>
         <NavigationBar searchCallback={setSearch} searchValue={search}></NavigationBar>
         <Container className="body">
-            { }
-            {/* <Row className={hTitle} >
-                {hTitle !== "d" ? ()=>sethTitle("") : null}
-                <Col>
-                    
-                    <h1 key={hTitle} >{search!=="" ? `O to filmy po nazwą "${search}"` : "Wyszukaj filmu którego szukasz"}</h1>
-                </Col>
-            </Row> */}
+            
             <Row>
                 <Col className="pt-3">
-                    <h1>wyniki wyszukiwania dla "{search}"</h1>
+                {search != "" ? <h1>wyniki wyszukiwania dla "{search}"</h1> : null}
+                    
                 </Col>
             </Row>
             <Row>
@@ -70,7 +64,8 @@ function App() {
                             </Row>)
                             
                         ) : (
-                            <h1 className="text-danger">No movies found</h1>
+                            search != "" ? <h1 className="text-danger">No movies found</h1> : null
+                            
                         )}
                     </Container>
                 </Col>
@@ -80,6 +75,7 @@ function App() {
                         </Stack>
                 </Col>
             </Row>
+            <div></div>
         </Container>
         </>
     );

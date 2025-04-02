@@ -5,17 +5,23 @@ import { Form } from 'react-bootstrap';
 import {Row, Col} from 'react-bootstrap';
 import "../styles/Navbar.css";
 import Icon from "../assets/icon.svg?react";
+import PlayerIcon from "../assets/player.svg?react"
 
 const NavigationBar = (props) => {
     const searchCallback = props.searchCallback;
     const searchValue = props.searchValue;
-    const WebsiteIcon = "icon.svg";
     return (
         <>
       <Navbar className='NavigationBar'>
         <Container>
-          <Navbar.Brand href="/"><Icon width={50} height={50} fill={"#fff"}/><span>MovieRental.com</span></Navbar.Brand>
+          <Nav className='align-items-center'>
+            <Navbar.Brand href="/"><div className='logo'><Icon width={40} height={40} fill={"#fff"}/><span>Movie<span className='Rental'>Rental</span>.com</span></div></Navbar.Brand>
+          </Nav>
+          
+          
           <Nav className="justify-content-end">
+          <Nav.Link href='#watchlist'><span>WatchList</span> <PlayerIcon fill={"#0A900A"} width={20} height={20}/></Nav.Link>
+
           <Navbar.Text className='px-3'>Search:</Navbar.Text>
 
           <Form>

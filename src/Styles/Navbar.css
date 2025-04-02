@@ -10,8 +10,17 @@
 .searchInput{
     background-color: #333 !important;
     border: 0 !important;
+    text-align: left;
     
 }
 .searchInput::placeholder{
-    color: #c26f89 !important;
+    color: gray !important;
+}
+.logo{
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 1em;
+}
+.Rental{
+    color: rgb(182, 23, 23) !important;
 }
