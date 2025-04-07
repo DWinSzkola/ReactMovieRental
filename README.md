@@ -11,7 +11,7 @@ Aplikacja do wypożyczania filmów, zbudowana w technologii React przy użyciu J
 - **Logowanie**: Użytkownicy mogą się zalogować, aby uzyskać dostęp do pełnej funkcjonalności aplikacji.
 - **Przeglądanie Filmów**: Po zalogowaniu użytkownicy mają dostęp do listy filmów, które mogą przeglądać i wyszukiwać po tytule.
 
-### Strona z Filmami
+### Strona z Filmami 🎥
 
 - **Wyszukiwarka**: Umożliwia wyszukiwanie filmów po tytule.
 - **Dodawanie do Watchlisty**: Użytkownicy mogą dodać filmy do swojej listy filmów do obejrzenia.
@@ -28,11 +28,11 @@ Aplikacja do wypożyczania filmów, zbudowana w technologii React przy użyciu J
 
 Projekt jest w trakcie rozwoju. W przyszłości planowane są dodatkowe funkcje, takie jak rejestracja użytkownika, integracja z bazą danych filmów oraz możliwość oceniania filmów przez użytkowników.
 
-## Autor
+## Autor 👨‍💻
 
 Autorem aplikacji jest **Dawid Winogrodzki**.
 
-## Użyte biblioteki
+## Użyte biblioteki 📦
 
 W poniższym pliku `package.json` znajdują się biblioteki, które zostały obecnie użyte w projekcie:
 
@@ -70,34 +70,27 @@ W poniższym pliku `package.json` znajdują się biblioteki, które zostały obe
 ```
 ## Użyte biblioteki
 
-- **React**: Biblioteka do budowy interfejsu użytkownika.
-- **React-Bootstrap**: Zestaw komponentów UI oparty na Bootstrapie.
-- **Vite**: Narzędzie do budowy aplikacji front-endowej z szybkim czasem ładowania.
-- **Bootstrap**: Framework CSS do budowy responsywnych i estetycznych interfejsów.
-- **ESLint**: Narzędzie do analizy statycznej kodu w celu wykrywania błędów i utrzymania jakości kodu.
+- ⚛️**React**: Biblioteka do budowy interfejsu użytkownika.
+- 🎨**React-Bootstrap**: Zestaw komponentów UI oparty na Bootstrapie.
+- ⚡**Vite**: Narzędzie do budowy aplikacji front-endowej z szybkim czasem ładowania.
+- 🖌️**Bootstrap**: Framework CSS do budowy responsywnych i estetycznych interfejsów.
+- 📈**ESLint**: Narzędzie do analizy statycznej kodu w celu wykrywania błędów i utrzymania jakości kodu.
 
-## Uruchomienie aplikacji
+## Uruchomienie aplikacji ⬇️  
 
-1. Sklonuj repozytorium:
-
-    ```bash
-    git clone <repo-url>
-    cd movierentalproject
-    ```
-
-2. Zainstaluj zależności:
+1. Zainstaluj zależności:
 
     ```bash
     npm install
     ```
 
-3. Uruchom aplikację w trybie deweloperskim:
+2. Uruchom aplikację w trybie deweloperskim:
 
     ```bash
     npm run dev
     ```
 
-4. Otwórz przeglądarkę i wejdź na adres `http://localhost:3000`.
+3. Otwórz przeglądarkę i wejdź na adres `http://localhost:3000`.
 
 ## Plany na przyszłość
 
