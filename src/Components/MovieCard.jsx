@@ -10,7 +10,7 @@ const MovieCard = (props) => {
     const [error, setError] = useState(false);
     const [isAddedToWatchList, setisAddedToWatchList] = useState(false);
     const cardRef = useRef(null);
-    const isCardInView = useInView(cardRef);
+    const isCardInView = useInView(cardRef, {once: true});
     console.log(isCardInView);
     return (
         <div className={"movieCard"} style={{opacity: isCardInView ? 1 : 0, transition: "3s"}} ref={cardRef}>            

@@ -18,29 +18,24 @@ const MovieSearch = () => {
     
     const [movieData, setMovieData] = useState([]);
     const [search, setSearch] = useState("");
-    const [visibleMovieData, setVisibleMovieData] = useState([]);
+    
     useEffect(() => {
         fetch(
             `http://www.omdbapi.com/?apikey=${apiKey}&s=${search !="" ? search : "godfather"}&plot=full`
         )
             .then((res) => res.json())
             .then((res) => {
-            setMovieData([]);
-
+                setMovieData([]);
+                //log results
                 console.log(res);
                 if(res.Response == "True"){
                     setMovieData(((data) => [...data, ...res.Search]));
-
-                }
-                
-                
-                
+                }            
             })
             .catch((err) => console.error(err));
             
     }, [search]);
     
-    console.log(movieData);
     
 
     return (
