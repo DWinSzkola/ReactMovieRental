@@ -4,8 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import { Form } from 'react-bootstrap';
 import {Row, Col} from 'react-bootstrap';
 import "../styles/Navbar.css";
-import Icon from "../assets/icon.svg?react";
 import PlayerIcon from "../assets/player.svg?react"
+import Logo from './Logo';
 
 const NavigationBar = (props) => {
     const searchCallback = props.searchCallback;
@@ -15,12 +15,11 @@ const NavigationBar = (props) => {
       <Navbar className='NavigationBar'>
         <Container>
           <Nav className='align-items-center'>
-            <Navbar.Brand href="/"><div className='logo'><Icon width={40} height={40} fill={"#fff"}/><span>Movie<span className='Rental'>Rental</span>.com</span></div></Navbar.Brand>
+            <Navbar.Brand href="/"><Logo/></Navbar.Brand>
           </Nav>
           
           
           <Nav className="justify-content-end">
-          <Nav.Link href='#watchlist'><span>WatchList</span> <PlayerIcon fill={"#0A900A"} width={20} height={20}/></Nav.Link>
 
           <Navbar.Text className='px-3'>Search:</Navbar.Text>
 
@@ -37,7 +36,9 @@ const NavigationBar = (props) => {
             </Col>
             
             </Row>
+            
         </Form>
+          <Nav.Link className='ms-5' href='#watchlist'><span>WatchList</span> <PlayerIcon fill={"#0A900A"} width={20} height={20}/></Nav.Link>
             
           </Nav>
         </Container>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap');
 .NavigationBar{
     background-color: black;
     border-bottom: 1px solid white;
@@ -16,11 +17,4 @@
 .searchInput::placeholder{
     color: gray !important;
 }
-.logo{
-    border: 1px solid #fff;
-    padding: 5px 10px;
-    border-radius: 1em;
-}
-.Rental{
-    color: rgb(182, 23, 23) !important;
-}
+

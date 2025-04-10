@@ -1,0 +1,17 @@
+.body {
+    background-color: rgba(0, 0, 0, 0.856);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin: 20px;
+    padding: px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.29);
+    border-radius: 1em;
+    min-height: 300px !important;
+    background-image: url("../assets/BackgroundImage.jpg") !important;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+}
+.movieGrid{
+    margin: 20px;
+}

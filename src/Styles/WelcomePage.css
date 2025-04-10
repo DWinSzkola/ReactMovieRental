@@ -1,0 +1,45 @@
+.backgroundVideo{
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    top: -30px;
+    filter: blur(0.5em) grayscale(60%) brightness(20%);
+    transform: scale(120%);
+}
+
+.menuWelcomePage{
+    
+    text-align: center;
+    
+    
+}
+
+.menuWelcomePage button{
+    
+    width: 200px;
+    box-sizing: border-box;
+    margin: 0 10px;
+    background-color: rgb(230, 40, 27);
+    border: 2px solid rgb(230, 40, 27);
+    transform: scale(100%);
+    transition: 200ms;
+}
+.signInButton{
+    background-color: transparent !important;
+}
+.signInButton:hover{
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(0, 0, 0) !important;
+    border: 2px solid white !important;
+    
+
+}
+.menuWelcomePage button:hover{
+    background-color:white;
+    transition: 200ms;
+    transform: scale(110%);
+    
+    border: 2px solid rgb(230, 40, 27);
+    color: black;
+    
+}

@@ -4,7 +4,7 @@ a{
 }
 .movieCard {
     margin-bottom: 15px;
-    background-color: #801336;
+    
     border-radius: 1em;
     color: #fff;
     border: 3px solid #222;
@@ -90,4 +90,13 @@ a{
     transition: 0.3s;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     filter: brightness(0.3);
+}
+.noCardInView{
+    opacity: 0;
+    transition: 3s;
+
+}
+.cardInView{
+    opacity: 1;
+    transition: 3s;
 }
