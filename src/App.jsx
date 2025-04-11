@@ -1,16 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MovieSearch from "./Components/MovieSearch";
-import "./App.css"
+import "./App.css";
 import WelcomePage from "./Components/WelcomePage";
 
-const App = () =>{
-    return <BrowserRouter>
-        <Routes>
-            <Route exact path="/*" element={<WelcomePage />}/>
-            <Route path="/" element={<WelcomePage />}/>
-            <Route path="/movies" element={<MovieSearch/>}/>
-            
-        </Routes>
-    </BrowserRouter>
-}
+import { UserProvider } from "./Components/UserProvider";
+
+const App = () => {
+    return (
+        <UserProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route exact path="/*" element={<WelcomePage />} />
+                    <Route path="/" element={<WelcomePage />} />
+                    <Route path="/movies" element={<MovieSearch />} />
+                </Routes>
+            </BrowserRouter>
+        </UserProvider>
+    );
+};
 export default App;
