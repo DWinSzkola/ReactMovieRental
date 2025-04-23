@@ -6,14 +6,13 @@ import { Row, Col } from "react-bootstrap";
 import "../styles/Navbar.css";
 import PlayerIcon from "../assets/player.svg?react";
 import Logo from "./Logo";
-import { useContext } from "react";
-import { UserContext } from "./UserProvider";
+
 
 const NavigationBar = (props) => {
     const searchCallback = props.searchCallback;
     const searchValue = props.searchValue;
-    const { user, changeUsername } = useContext(UserContext);
-    console.log(user);
+
+
     return (
         <>
             <Navbar className="NavigationBar">
@@ -48,10 +47,7 @@ const NavigationBar = (props) => {
                                 height={20}
                             />
                         </Nav.Link>
-                        <Nav.Link>
-                            <span>{user.name}</span>
-                        </Nav.Link>
-                        <Button onClick={() => changeUsername("Dawid")} />
+                       
                     </Nav>
                 </Container>
             </Navbar>

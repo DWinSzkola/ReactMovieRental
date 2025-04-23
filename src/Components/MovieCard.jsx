@@ -1,17 +1,40 @@
 import "../styles/MovieCard.css";
 import NoImageAvailable from "../assets/NoImageAvailable.png";
 import Plus from "../assets/plus.svg?react";
-import { useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
+import { UserContext } from "./UserProvider";
 
 const MovieCard = (props) => {
     const movieInfo = props.movieInfo;
     const [isImageLoaded, setIsImageLoaded] = useState(false);
     const [error, setError] = useState(false);
-    const [isAddedToWatchList, setisAddedToWatchList] = useState(false);
     const cardRef = useRef(null);
     const isCardInView = useInView(cardRef, { once: true });
-    //console.log(isCardInView);
+    const { addMovie, removeMovie, user } = useContext(UserContext);
+    const isMovieOnWatchlist = (movie) =>{
+        console.log("Check")
+        console.log(user);
+        if(user.watchlist.filter(e=> e.imdbID === movie.imdbID).length > 0){
+            console.log("movie already is in watchlist")
+            return true;
+        }
+        return false;
+    }
+    
+    const [isAddedToWatchList, setisAddedToWatchList] = useState(isMovieOnWatchlist(movieInfo));
+    
+    
+    const onAddMovieClick = (movie) =>{
+        
+        isAddedToWatchList ? removeMovie(movie) : addMovie(movie)
+
+        setisAddedToWatchList(!isAddedToWatchList)
+        
+    }
+    
+    
+    
     return (
         <div
             className={"movieCard"}
@@ -31,7 +54,7 @@ const MovieCard = (props) => {
                         height={30}
                         fill={"#EEE"}
                         onClick={() =>
-                            setisAddedToWatchList(!isAddedToWatchList)
+                            onAddMovieClick(movieInfo)
                         }
                     />
                 </button>

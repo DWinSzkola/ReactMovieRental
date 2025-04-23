@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../Styles/MovieSearch.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -9,8 +9,9 @@ import { Stack } from "react-bootstrap";
 import NavigationBar from "./Navbar";
 import "../Styles/SideBar.css";
 import "../Styles/gridHeader.css";
+import { UserContext } from "./UserProvider";
 
-//Color Pattern https://colorhunt.co/palette/443627d98324efdcabf2f6d0
+
 
 const MovieSearch = () => {
     const apiKey = options.apikey;
@@ -18,6 +19,8 @@ const MovieSearch = () => {
     const [movieData, setMovieData] = useState([]);
     const [search, setSearch] = useState("");
 
+    const { user } = useContext(UserContext);
+    
     useEffect(() => {
         fetch(
             `http://www.omdbapi.com/?apikey=${apiKey}&s=${
@@ -35,6 +38,9 @@ const MovieSearch = () => {
             })
             .catch((err) => console.error(err));
     }, [search]);
+    useEffect(()=>{
+        console.log(user);
+    }, [user])
 
     return (
         <>
