@@ -3,12 +3,13 @@
     margin: 0;
     box-sizing: border-box;
 }
+a{
+    text-decoration: none !important;
+}
 body {
     background-color: black !important;
     
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: center;
+    
 }
 
 

@@ -1,0 +1,23 @@
+{
+    "video-quality":{
+        "360p" : {"name" : "360p", "price" :2.5},
+        "720p" : {"name" : "720p", "price" :5},
+        "1080p" : {"name" : "1080p", "price" :6.25},
+        "4k" : {"name" : "4k", "price" : 8}
+    },
+    "audio":{
+        "mono" : {"name" : "Mono", "price" : 0},
+        "stereo" : {"name" : "Stereo", "price" : 0.5},
+        "5_1-surround": {"name" : "5.1 Surround", "price" :1}
+    },
+    "subtitles":{
+        "none" : 0,
+        "english" : 0,
+        "polish" : 0
+    },
+    "rental-time":{
+        "1day" : 0.5,
+        "7days" : 1.5,
+        "1month" : 2.5
+    }
+}
