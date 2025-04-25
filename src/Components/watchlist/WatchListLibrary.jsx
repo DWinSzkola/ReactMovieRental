@@ -4,7 +4,7 @@ import { UserContext} from "../contex/UserProvider";
 import { Navigate } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import "../../Styles/MovieSearch.css"
-import WatchlistMovie from "./watchlistMovie";
+import WatchlistMovie from "./WatchlistMovie";
 
 const watchListLibrary = () =>{
     const {user} = useContext(UserContext);
