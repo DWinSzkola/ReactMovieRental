@@ -1,60 +1,150 @@
-import { AspectRatio, Button, Card, CardContent, FormControl, IconButton, MenuItem, Select, Typography } from "@mui/joy";
-import "../../Styles/watchlistMovie.css"
-import imageUnavailable from "../../assets/NoImageAvailable.png"
-import prices from "../../assets/priceData/prices.json"
-import { InputLabel } from "@mui/material";
-import { useState } from "react";
-const WatchlistMovie = (props) =>{
-    const movieInfo = props.movie;
+//TODO: watchlistMovie: wylaczenie mozliwosci wybierania opcji po wcisnieciu przycisku "RENT"
+//TODO: watchlistMovie: wypelnienie dodatkowych inforamcji za pomoca dodatkowej funkcji API do wyszukiwania filmow po ID (jezeli to mozliwe jeszcze nie sprawdzalem)
+//TODO: dodanie mozliwosci zmienienia czasu wypozyczenia (cennik jest juz w pliku json prices)
+
+
+import React, { useState, useEffect } from "react";
+import prices from "../../assets/priceData/prices.json";
+import imageUnavailable from "../../assets/NoImageAvailable.png";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const WatchlistMovie = ({ movie }) => {
+    const [videoQuality, setVideoQuality] = useState("720p");
+    const [audioQuality, setAudioQuality] = useState("mono");
+    const [subtitles, setSubtitles] = useState("none");
+    const [rented, setRented] = useState(false);
+    const [timeLeft, setTimeLeft] = useState(0); // in seconds
+
+    const videoPrices = prices["video-quality"];
     const audioPrices = prices["audio"];
-    const [AudioOption, setAudioOption] = useState(audioPrices["mono"]["price"]);
+    const subtitlePrices = prices["subtitles"];
+    const rentalPeriodSeconds = 2 * 24 * 60 * 60;
 
+    const getTotalPrice = () => {
+        return (
+            videoPrices[videoQuality]?.price +
+            audioPrices[audioQuality]?.price +
+            (subtitlePrices[subtitles] || 0) +
+            prices["rental-time"]["1day"] * 2
+        ).toFixed(2);
+    };
 
+    const startRental = () => {
+        setRented(true);
+        setTimeLeft(rentalPeriodSeconds);
+    };
 
-    return <Card sx={{ width: 600 }} variant="solid" orientation="horizontal" invertedColors color="neutral" className="watchlistCard" >
-    
-    <AspectRatio ratio="1" sx={{width: 90}} minHeight={200}>
-        
-        <img className="WLCImage"
-            src={movieInfo.Poster}
-            
-            loading="lazy"
-            
-        />
-    </AspectRatio>
-    <CardContent orientation="horizontal" className="m-2">
-      <div>
-        <Typography level="body-xs">{movieInfo.Title}</Typography>
-        <Typography sx={{ fontSize: 'lg', fontWeight: 'lg' }}></Typography>
-      </div>
-      <div>
-      <FormControl>
-        <InputLabel className="text-light">Audio</InputLabel>
-        <Select
-            
-            id="Audio"
-            label="Audio"
-            value={AudioOption}
-            onChange={(e)=>setAudioOption(e)}
-        >
-            <MenuItem defaultChecked value={audioPrices["mono"]["price"]}>{audioPrices["mono"]["name"]}</MenuItem>
-            <MenuItem value={audioPrices["stereo"]["price"]}>{audioPrices["stereo"]["name"]}</MenuItem>
-            <MenuItem value={audioPrices["5_1-surround"]["price"]}>{audioPrices["5_1-surround"]["name"]}</MenuItem>
-        </Select>
-    </FormControl>
-      </div>
-      {AudioOption.toString}
-      <Button
-        variant="solid"
-        size="md"
-        color="primary"
-        aria-label="Explore Bahamas Islands"
-        sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
-      >
-        Explore
-      </Button>
-    </CardContent>
-  </Card>
+    useEffect(() => {
+        if (!rented || timeLeft <= 0) return;
 
-}
+        const timer = setInterval(() => {
+            setTimeLeft((prev) => {
+                if (prev <= 1) {
+                    clearInterval(timer);
+                    setRented(false);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [rented, timeLeft]);
+
+    const formatTime = (seconds) => {
+        const d = Math.floor(seconds / (3600 * 24));
+        const h = Math.floor((seconds % (3600 * 24)) / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        const s = seconds % 60;
+        return `${d}d ${h}h ${m}m ${s}s`;
+    };
+
+    return (
+        <div className="card text-white bg-dark mb-3 shadow" style={{ maxWidth: "540px" }}>
+            <div className="row g-0">
+                <div className="col-md-4">
+                    <img
+                        src={movie.Poster || imageUnavailable}
+                        alt={movie.Title}
+                        className="img-fluid rounded-start"
+                        style={{ objectFit: "cover", height: "100%" }}
+                    />
+                </div>
+                <div className="col-md-8">
+                    <div className="card-body">
+                        <h5 className="card-title">{movie.Title}</h5>
+                        <p className="card-text text-light-emphasis">Długość: {movie.Length}</p>
+
+                        {/* VIDEO QUALITY SELECT */}
+                        <div className="mb-2">
+                            <label className="form-label">Jakość wideo</label>
+                            <select
+                                className="form-select bg-dark text-white border-light"
+                                value={videoQuality}
+                                onChange={(e) => setVideoQuality(e.target.value)}
+                            >
+                                {Object.entries(videoPrices).map(([key, val]) => (
+                                    <option key={key} value={key}>
+                                        {val.name} ({val.price} zł)
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* AUDIO SELECT */}
+                        <div className="mb-2">
+                            <label className="form-label">Audio</label>
+                            <select
+                                className="form-select bg-dark text-white border-light"
+                                value={audioQuality}
+                                onChange={(e) => setAudioQuality(e.target.value)}
+                            >
+                                {Object.entries(audioPrices).map(([key, val]) => (
+                                    <option key={key} value={key}>
+                                        {val.name} ({val.price} zł)
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* SUBTITLES SELECT */}
+                        <div className="mb-3">
+                            <label className="form-label">Napisy</label>
+                            <select
+                                className="form-select bg-dark text-white border-light"
+                                value={subtitles}
+                                onChange={(e) => setSubtitles(e.target.value)}
+                            >
+                                {Object.keys(subtitlePrices).map((key) => (
+                                    <option key={key} value={key}>
+                                        {key.charAt(0).toUpperCase() + key.slice(1)} ({subtitlePrices[key]} zł)
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* PRICE + RENT BUTTON */}
+                        <p className="card-text text-white">
+                            <strong>Łączna cena:</strong> {getTotalPrice()} zł
+                        </p>
+
+                        {!rented ? (
+                            <button
+                                className="btn btn-outline-light w-100"
+                                onClick={startRental}
+                            >
+                                Wypożycz na 2 dni
+                            </button>
+                        ) : (
+                            <p className="card-text text-success">
+                                Pozostały czas: <strong>{formatTime(timeLeft)}</strong>
+                            </p>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 export default WatchlistMovie;

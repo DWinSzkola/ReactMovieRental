@@ -1,3 +1,7 @@
+//TODO: App: localstorage, zapisanie nowej listy wypozyczonych filmow i zapisanie stanu zegara do licznie ile zostało czasu do obejrzenia, wszystko powinno zawrzec sie w user kontekst
+//TODO: App: zrobic logowanie uzytkownika oraz wykorzystanie do tego localStorage
+
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MovieSearch from "./Components/movieSearch/MovieSearch";
 import "./App.css";

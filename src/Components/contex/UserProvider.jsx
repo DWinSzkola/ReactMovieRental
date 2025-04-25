@@ -1,3 +1,5 @@
+//TODO: UserProvider: walidowanie zalogowanie uzytkownika do zapisywania filmow do watchlisty oraz wyswietlanie, samej watchlisty
+
 import { useState, createContext } from "react";
 
 export const UserContext = createContext();
