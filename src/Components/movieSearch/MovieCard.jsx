@@ -1,4 +1,4 @@
-import "../../styles/MovieCard.css";
+import "../../Styles/MovieCard.css";
 import NoImageAvailable from "../../assets/NoImageAvailable.png";
 import Plus from "../../assets/plus.svg?react";
 import { useContext, useEffect, useRef, useState } from "react";
