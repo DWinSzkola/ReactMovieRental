@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MovieSearch from "./Components/movieSearch/MovieSearch";
 import "./App.css";
 import WelcomePage from "./Components/welcomePage/WelcomePage";
-import WatchListLibrary from "./Components/watchlist/watchListLibrary";
+import WatchListLibrary from "./Components/watchlist/WatchListLibrary";
 import { UserProvider } from "./Components/contex/UserProvider";
 
 import { CssBaseline } from "@mui/material";
