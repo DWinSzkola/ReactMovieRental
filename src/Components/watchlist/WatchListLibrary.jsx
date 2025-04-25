@@ -3,7 +3,7 @@ import NavigationBar from "../navbar/Navbar";
 import { UserContext} from "../contex/UserProvider";
 import { Navigate } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
-import "../../Styles/movieSearch.css"
+import "../../Styles/MovieSearch.css"
 import WatchlistMovie from "./watchlistMovie";
 
 const watchListLibrary = () =>{
