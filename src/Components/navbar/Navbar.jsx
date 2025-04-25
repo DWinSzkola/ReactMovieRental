@@ -1,9 +1,13 @@
+//TODO: Navbar: dodanie przycisku do movieSearch 
+//TODO: Navbar: Navbar nie jest w 100% responsywny, naprawic serachbar, najprawdopodobniej zrobic hamburgera
+
+
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Button, Form } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
-import "../../styles/Navbar.css";
+import "../../Styles/Navbar.css";
 import PlayerIcon from "../../assets/player.svg?react";
 import Logo from "../template/Logo";
 import { Link } from "react-router-dom";
