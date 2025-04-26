@@ -3,7 +3,7 @@
     min-width: 100%;
     min-height: 100%;
     top: -30px;
-    filter: blur(0.5em) grayscale(60%) brightness(20%);
+    filter: blur(0.5em) grayscale(60%) brightness(30%);
     transform: scale(120%);
 }
 
