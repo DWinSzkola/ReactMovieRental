@@ -1,6 +1,4 @@
-//TODO: Navbar: dodanie przycisku do movieSearch 
 //TODO: Navbar: Navbar nie jest w 100% responsywny, naprawic serachbar, najprawdopodobniej zrobic hamburgera
-
 
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
@@ -12,22 +10,37 @@ import PlayerIcon from "../../assets/player.svg?react";
 import Logo from "../template/Logo";
 import { Link } from "react-router-dom";
 
-
-const NavigationBar = (props) => {
-    const searchCallback = props.searchCallback;
-    const searchValue = props.searchValue;
-
-
+const NavigationBar = ({ searchCallback, searchValue }) => {
     return (
         <>
             <Navbar className="NavigationBar">
                 <Container>
                     <Nav className="align-items-center">
-                        <Link to="/" className="navbar-brand" style={{textDecoration: "none"}}>
+                        <Link
+                            to="/"
+                            className="navbar-brand"
+                            style={{ textDecoration: "none" }}
+                        >
                             <Logo />
                         </Link>
+                        <Link className="nav-item nav-link ms-5" to="/movies">
+                            <span className="btn btn-light text-dark">
+                                Search for a movie
+                            </span>
+                        </Link>
                     </Nav>
-                    <Nav className="justify-content-end">
+                    <Nav className="justify-content-end align-items-center">
+                        <Link
+                            className="nav-item nav-link ms-5"
+                            to="/watchlist"
+                        >
+                            <span>WatchList</span>{" "}
+                            <PlayerIcon
+                                fill={"#0A900A"}
+                                width={20}
+                                height={20}
+                            />
+                        </Link>
                         <Navbar.Text className="px-3">Search:</Navbar.Text>
                         <Form>
                             <Row>
@@ -44,15 +57,6 @@ const NavigationBar = (props) => {
                                 </Col>
                             </Row>
                         </Form>
-                        <Link className="nav-item nav-link ms-5" to="/watchlist">
-                            <span>WatchList</span>{" "}
-                            <PlayerIcon
-                                fill={"#0A900A"}
-                                width={20}
-                                height={20}
-                            />
-                        </Link>
-                       
                     </Nav>
                 </Container>
             </Navbar>

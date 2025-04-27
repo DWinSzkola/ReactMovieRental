@@ -1,4 +1,3 @@
-//TODO: App: localstorage, zapisanie nowej listy wypozyczonych filmow i zapisanie stanu zegara do licznie ile zostało czasu do obejrzenia, wszystko powinno zawrzec sie w user kontekst
 //TODO: App: zrobic logowanie uzytkownika oraz wykorzystanie do tego localStorage
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -10,6 +9,7 @@ import { UserProvider } from "./Components/contex/UserProvider";
 
 import { CssBaseline } from "@mui/material";
 import Test from "./Components/template/test";
+import SignIn from "./Components/signIn/SignIn";
 const App = () => {
     return (
         <UserProvider>
@@ -21,6 +21,7 @@ const App = () => {
                     <Route path="/movies" element={<MovieSearch />} />
                     <Route path="/watchlist" element={<WatchListLibrary />} />
                     <Route path="/test" element={<Test />} />
+                    <Route path="/signin" element={<SignIn />} />
                 </Routes>
             </BrowserRouter>
         </UserProvider>

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Logo from "../template/Logo";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import VideoBackground from "../template/VideoBackground";
 
 const WelcomePage = () => {
     const logoRef = useRef(null);
@@ -12,10 +13,7 @@ const WelcomePage = () => {
     const buttonsRef = useRef(null);
     const areButtonsInView = useInView(buttonsRef);
     return (
-        <div className="backgroundWelcomePage">
-            <video muted loop autoPlay className="backgroundVideo">
-                <source src={BackgroundWelcomePage} type="video/mp4" />
-            </video>
+        <VideoBackground>
             <Container
                 fluid
                 style={{ position: "fixed", width: "100%", height: "100%" }}
@@ -55,9 +53,11 @@ const WelcomePage = () => {
                                                 Go Search a Movie
                                             </Button>
                                         </Link>
-                                        <Button className="rounded-5 signInButton">
-                                            Sign in
-                                        </Button>
+                                        <Link to="/signin">
+                                            <Button className="rounded-5 signInButton">
+                                                Sign in
+                                            </Button>
+                                        </Link>
                                     </div>
                                 </Col>
                             </Row>
@@ -65,7 +65,7 @@ const WelcomePage = () => {
                     </Col>
                 </Row>
             </Container>
-        </div>
+        </VideoBackground>
     );
 };
 export default WelcomePage;

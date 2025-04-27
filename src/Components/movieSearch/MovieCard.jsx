@@ -5,77 +5,92 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { UserContext } from "../contex/UserProvider";
 
-const MovieCard = (props) => {
-  const movieInfo = props.movieInfo;
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const [error, setError] = useState(false);
-  const cardRef = useRef(null);
-  const isCardInView = useInView(cardRef, { once: true });
-  const { addMovie, removeMovie, user } = useContext(UserContext);
-  const isMovieOnWatchlist = (movie) => {
-    if (user.watchlist.filter((e) => e.imdbID === movie.imdbID).length > 0) {
-      return true;
-    }
-    return false;
-  };
+const MovieCard = ({ movieInfo }) => {
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
+    const [error, setError] = useState(false);
+    const cardRef = useRef(null);
+    const isCardInView = useInView(cardRef, { once: true });
+    const { addMovie, removeMovie, user } = useContext(UserContext);
+    const isMovieOnWatchlist = (movie) => {
+        if (
+            user.watchlist.filter((e) => e.imdbID === movie.imdbID).length > 0
+        ) {
+            return true;
+        }
+        return false;
+    };
 
-  const [isAddedToWatchList, setisAddedToWatchList] = useState(
-    isMovieOnWatchlist(movieInfo)
-  );
+    const [isAddedToWatchList, setisAddedToWatchList] = useState(false);
 
-  const onAddMovieClick = (movie) => {
-    isAddedToWatchList ? removeMovie(movie) : addMovie(movie);
+    const onAddMovieClick = (movie) => {
+        const isRented = user.rentedMovies.some(
+            (m) => m.imdbID === movie.imdbID
+        );
 
-    setisAddedToWatchList(!isAddedToWatchList);
-  };
+        if (isRented) return;
 
-  return (
-    <div
-      className={"movieCard"}
-      style={{ opacity: isCardInView ? 1 : 0, transition: "3s" }}
-      ref={cardRef}
-    >
-      <div className="DivPoster">
-        <button
-          className={
-            isAddedToWatchList ? "addButton activeButton" : "addButton"
-          }
+        if (isAddedToWatchList) {
+            removeMovie(movie);
+        } else {
+            addMovie(movie);
+        }
+
+        setisAddedToWatchList(!isAddedToWatchList);
+    };
+    useEffect(() => {
+        setisAddedToWatchList(isMovieOnWatchlist(movieInfo));
+    }, [user.watchlist]);
+    return (
+        <div
+            className={"movieCard"}
+            style={{ opacity: isCardInView ? 1 : 0, transition: "3s" }}
+            ref={cardRef}
         >
-          <Plus
-            width={30}
-            height={30}
-            fill={"#EEE"}
-            onClick={() => onAddMovieClick(movieInfo)}
-          />
-        </button>
-        <a
-          target="_blank"
-          href={`https://www.imdb.com/title/${movieInfo.imdbID}`}
-        >
-          <div className="movieInfo">
-            <b>
-              <span>{movieInfo.Title}</span>
-            </b>
-            <br />
-            <span>{movieInfo.Year}</span>
-          </div>
-          <div className="DivPosterFlex">
-            <img
-              width={200}
-              className="poster"
-              src={
-                movieInfo.Poster !== "N/A" && isImageLoaded && !error
-                  ? movieInfo.Poster
-                  : NoImageAvailable
-              }
-              onLoad={() => setIsImageLoaded(true)}
-              onError={() => setError(true)}
-            />
-          </div>
-        </a>
-      </div>
-    </div>
-  );
+            <div className="DivPoster">
+                <button
+                    className={
+                        isAddedToWatchList
+                            ? "addButton activeButton"
+                            : "addButton"
+                    }
+                >
+                    <Plus
+                        width={30}
+                        height={30}
+                        fill={"#EEE"}
+                        onClick={() => onAddMovieClick(movieInfo)}
+                    />
+                </button>
+                <a
+                    target="_blank"
+                    href={`https://www.imdb.com/title/${movieInfo.imdbID}`}
+                >
+                    <div className="movieInfo">
+                        <b>
+                            <span>{movieInfo.Title}</span>
+                        </b>
+                        <br />
+                        <span>{movieInfo.Year}</span>
+                    </div>
+                    <div className="DivPosterFlex">
+                        <img
+                            width={200}
+                            className="poster"
+                            src={
+                                movieInfo.Poster !== "N/A" &&
+                                isImageLoaded &&
+                                !error
+                                    ? movieInfo.Poster
+                                    : NoImageAvailable
+                            }
+                            onLoad={() => setIsImageLoaded(true)}
+                            onError={() => setError(true)}
+                        />
+                    </div>
+                </a>
+            </div>
+        </div>
+    );
 };
 
 export default MovieCard;

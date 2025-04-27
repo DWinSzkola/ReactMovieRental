@@ -1,20 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap');
-.NavigationBar{
+@import url("https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap");
+.NavigationBar {
     background-color: black;
     border-bottom: 1px solid white;
     box-shadow: black 0 0 20px;
-    
 }
-.NavigationBar *{
+.NavigationBar * {
     color: white !important;
 }
-.searchInput{
+.searchInput {
     background-color: #333 !important;
     border: 0 !important;
     text-align: left;
-    
 }
-.searchInput::placeholder{
+.searchInput::placeholder {
     color: gray !important;
 }
-

@@ -34,7 +34,9 @@ const MovieSearch = () => {
             })
             .catch((err) => console.error(err));
     }, [search]);
-
+    useEffect(() => {
+        console.log(user.watchlist);
+    }, [user.watchlist]);
     return (
         <>
             <NavigationBar
