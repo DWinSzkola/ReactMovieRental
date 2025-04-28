@@ -38,6 +38,7 @@ const MovieSearch = () => {
             <NavigationBar
                 searchCallback={setSearch}
                 searchValue={search}
+                SearchBar={true}
             ></NavigationBar>
             <Container fluid className="body">
                 <Row>

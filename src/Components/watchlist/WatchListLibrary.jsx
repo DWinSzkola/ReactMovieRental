@@ -12,7 +12,7 @@ const watchListLibrary = () => {
     return (
         <>
             <NavigationBar />
-            <Container fluid className="body" style={{ minHeight: "100vh" }}>
+            <Container fluid className="body">
                 {
                     <Row>
                         {user ? (
@@ -34,7 +34,7 @@ const watchListLibrary = () => {
                                     >
                                         Sign in
                                     </Link>{" "}
-                                    to add and rent movies
+                                    to add to watchlist and rent movies
                                 </Alert>
                             </Col>
                         )}

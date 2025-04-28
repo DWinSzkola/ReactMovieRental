@@ -33,10 +33,15 @@ const WatchlistMovie = ({ movie }) => {
         const durationInSeconds =
             24 * 60 * 60 * prices["rental-time"][rentalTime]?.durationInDays;
         const endOfRent = new Date(Date.now() + durationInSeconds * 1000);
-
+        const options = {
+            video: videoQuality,
+            audio: audioQuality,
+            subtitles: subtitles,
+            rentalTime: rentalTime,
+        };
         setRented(true);
         setTimeLeft(durationInSeconds);
-        addToRentedMovies({ imdbID: movie.imdbID, endOfRent });
+        addToRentedMovies({ imdbID: movie.imdbID, endOfRent, options });
     };
 
     const checkIfAlreadyRented = () => {
@@ -48,6 +53,10 @@ const WatchlistMovie = ({ movie }) => {
             const end = new Date(rentedMovie.endOfRent);
             if (end > now) {
                 setTimeLeft(Math.floor((end - now) / 1000));
+                setVideoQuality(rentedMovie.options.video);
+                setAudioQuality(rentedMovie.options.audio);
+                setSubtitles(rentedMovie.options.subtitles);
+                setRentalTime(rentedMovie.options.rentalTime);
                 return true;
             }
         }

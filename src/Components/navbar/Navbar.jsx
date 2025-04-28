@@ -11,7 +11,7 @@ import Logo from "../template/Logo";
 import { Link } from "react-router-dom";
 import VideoBackground from "../template/VideoBackground";
 
-const NavigationBar = ({ searchCallback, searchValue }) => {
+const NavigationBar = ({ searchCallback, searchValue, SearchBar = false }) => {
     return (
         <>
             <Navbar
@@ -40,24 +40,33 @@ const NavigationBar = ({ searchCallback, searchValue }) => {
                         <Offcanvas.Body>
                             <Nav className="justify-content-start flex-grow-1 pe-3">
                                 <Link to={"/"} className="nav-link text-center">
-                                    Home
+                                    <span>Home</span>
                                 </Link>
                             </Nav>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
-                                <Form className="d-flex">
-                                    <Navbar.Text className="px-3">
-                                        Search:
-                                    </Navbar.Text>
-                                    <Form.Control
-                                        value={searchValue}
-                                        type="text"
-                                        placeholder="Movie Title"
-                                        className=" mr-sm-2 me-1 searchInput"
-                                        onInput={(e) =>
-                                            searchCallback(e.target.value)
-                                        }
-                                    />
-                                </Form>
+                                {SearchBar ? (
+                                    <Form className="d-flex">
+                                        <Navbar.Text className="px-3">
+                                            Search:
+                                        </Navbar.Text>
+                                        <Form.Control
+                                            value={searchValue}
+                                            type="text"
+                                            placeholder="Movie Title"
+                                            className=" mr-sm-2 me-1 searchInput"
+                                            onInput={(e) =>
+                                                searchCallback(e.target.value)
+                                            }
+                                        />
+                                    </Form>
+                                ) : (
+                                    <Link
+                                        to={"/movies"}
+                                        className="nav-link text-center"
+                                    >
+                                        <span>Search for movies</span>
+                                    </Link>
+                                )}
 
                                 <Link
                                     to={"/watchlist"}

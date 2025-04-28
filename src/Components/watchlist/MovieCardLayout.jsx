@@ -1,5 +1,6 @@
 import RentalOptions from "./RentalOptions";
 import RentalStatus from "./RentalStatus";
+import "../../Styles/watchlistMovie.css";
 
 const MovieCardLayout = ({
     movie,
@@ -50,8 +51,12 @@ const MovieCardLayout = ({
                             rentalTime={rentalTime}
                             setRentalTime={setRentalTime}
                         />
-                        <p className="card-text text-white">
-                            <strong>Total price:</strong> {getTotalPrice()} zł
+                        <p
+                            className={`${
+                                rented ? " total-price-rented " : " text-white "
+                            }card-text`}
+                        >
+                            <strong>Total price: </strong> {getTotalPrice()} zł
                         </p>
                         <RentalStatus
                             rented={rented}

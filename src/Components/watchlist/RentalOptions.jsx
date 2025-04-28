@@ -1,5 +1,5 @@
 import prices from "../../assets/priceData/prices.json";
-
+import "../../Styles/watchlistMovie.css";
 const RentalOptions = ({
     rented,
     videoQuality,

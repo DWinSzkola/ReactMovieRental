@@ -10,7 +10,7 @@ const RentalStatus = ({ rented, timeLeft, startRental, rentalTime }) => {
     };
 
     return (
-        <div style={{ height: "20px" }}>
+        <div style={{ height: "30px" }}>
             {rented ? (
                 <p className="card-text text-success">
                     Time left: <strong>{formatTime(timeLeft)}</strong>
