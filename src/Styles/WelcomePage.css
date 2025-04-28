@@ -1,4 +1,4 @@
-.backgroundVideo{
+.backgroundVideo {
     position: fixed;
     min-width: 100%;
     min-height: 100%;
@@ -7,15 +7,12 @@
     transform: scale(120%);
 }
 
-.menuWelcomePage{
-    
+.menuWelcomePage {
     text-align: center;
-    
-    
 }
 
-.menuWelcomePage button{
-    
+.menuWelcomePage button {
+    margin: 5px !important;
     width: 200px;
     box-sizing: border-box;
     margin: 0 10px;
@@ -24,22 +21,28 @@
     transform: scale(100%);
     transition: 200ms;
 }
-.signInButton{
+.signInButton {
     background-color: transparent !important;
 }
-.signInButton:hover{
+.signInButton:hover {
     background-color: rgb(255, 255, 255) !important;
     color: rgb(0, 0, 0) !important;
     border: 2px solid white !important;
-    
-
 }
-.menuWelcomePage button:hover{
-    background-color:white;
+.signOutButton {
+    background-color: rgb(119, 18, 11) !important;
+    border: 2px solid rgb(119, 18, 11) !important;
+}
+.signOutButton:hover {
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(0, 0, 0) !important;
+    border: 2px solid white !important;
+}
+.menuWelcomePage button:hover {
+    background-color: white;
     transition: 200ms;
     transform: scale(110%);
-    
+
     border: 2px solid rgb(230, 40, 27);
     color: black;
-    
 }

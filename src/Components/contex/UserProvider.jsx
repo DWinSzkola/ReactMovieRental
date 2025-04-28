@@ -11,6 +11,7 @@ export const UserProvider = ({ children }) => {
             ? JSON.parse(userLS)
             : {
                   name: "User1",
+                  password: "password123",
                   watchlist: [],
                   rentedMovies: [],
               };
@@ -39,7 +40,7 @@ export const UserProvider = ({ children }) => {
     }, [user]);
     return (
         <UserContext.Provider
-            value={{ user, addMovie, removeMovie, addToRentedMovies }}
+            value={{ user, addMovie, removeMovie, addToRentedMovies, setUser }}
         >
             {children}
         </UserContext.Provider>

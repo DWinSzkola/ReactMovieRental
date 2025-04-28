@@ -1,13 +1,15 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
-import BackgroundWelcomePage from "../../assets/BackgroundWelcomePage.mp4";
+
 import "../../Styles/WelcomePage.css";
 import { Link } from "react-router-dom";
 import Logo from "../template/Logo";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useInView } from "framer-motion";
 import VideoBackground from "../template/VideoBackground";
+import { UserContext } from "../contex/UserProvider";
 
 const WelcomePage = () => {
+    const { user, setUser } = useContext(UserContext);
     const logoRef = useRef(null);
     const isLogoInView = useInView(logoRef);
     const buttonsRef = useRef(null);
@@ -53,11 +55,20 @@ const WelcomePage = () => {
                                                 Go Search a Movie
                                             </Button>
                                         </Link>
-                                        <Link to="/signin">
-                                            <Button className="rounded-5 signInButton">
-                                                Sign in
+                                        {user == null ? (
+                                            <Link to="/signin">
+                                                <Button className="rounded-5 signInButton">
+                                                    Sign in
+                                                </Button>
+                                            </Link>
+                                        ) : (
+                                            <Button
+                                                className="rounded-5 signOutButton"
+                                                onClick={() => setUser(null)}
+                                            >
+                                                Sign out
                                             </Button>
-                                        </Link>
+                                        )}
                                     </div>
                                 </Col>
                             </Row>

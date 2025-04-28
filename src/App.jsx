@@ -1,15 +1,16 @@
 //TODO: App: zrobic logowanie uzytkownika oraz wykorzystanie do tego localStorage
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import MovieSearch from "./Components/movieSearch/MovieSearch";
 import "./App.css";
 import WelcomePage from "./Components/welcomePage/WelcomePage";
 import WatchListLibrary from "./Components/watchlist/WatchListLibrary";
-import { UserProvider } from "./Components/contex/UserProvider";
+import { UserContext, UserProvider } from "./Components/contex/UserProvider";
 
 import { CssBaseline } from "@mui/material";
 import Test from "./Components/template/test";
 import SignIn from "./Components/signIn/SignIn";
+import { useContext } from "react";
 const App = () => {
     return (
         <UserProvider>
