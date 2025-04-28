@@ -9,13 +9,14 @@ import "../../Styles/Navbar.css";
 import PlayerIcon from "../../assets/player.svg?react";
 import Logo from "../template/Logo";
 import { Link } from "react-router-dom";
+import VideoBackground from "../template/VideoBackground";
 
 const NavigationBar = ({ searchCallback, searchValue }) => {
     return (
         <>
             <Navbar
                 expand="lg"
-                className="bg-body-tertiary mb-3 "
+                className="bg-body-tertiary mb-3 NavigationBar"
                 variant="dark"
                 data-bs-theme="dark"
             >
@@ -29,6 +30,7 @@ const NavigationBar = ({ searchCallback, searchValue }) => {
                         aria-labelledby={`offcanvasNavbarLabel-expand`}
                         placement="end"
                         data-bs-theme="dark"
+                        className="offCanvasNavigationBar"
                     >
                         <Offcanvas.Header closeButton>
                             <Offcanvas.Title id={`offcanvasNavbarLabel-expand`}>
@@ -36,37 +38,39 @@ const NavigationBar = ({ searchCallback, searchValue }) => {
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            <Nav className="justify-content-end flex-grow-1 pe-3">
-                                <Link to={"/"}>Home</Link>
-                                {/* //TODO: */}
-                                <Link to={"/watchlist"}>Link</Link>
-                                <NavDropdown
-                                    title="Dropdown"
-                                    id={`offcanvasNavbarDropdown-expand`}
-                                >
-                                    <NavDropdown.Item href="#action3">
-                                        Action
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Item href="#action4">
-                                        Another action
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action5">
-                                        Something else here
-                                    </NavDropdown.Item>
-                                </NavDropdown>
+                            <Nav className="justify-content-start flex-grow-1 pe-3">
+                                <Link to={"/"} className="nav-link text-center">
+                                    Home
+                                </Link>
                             </Nav>
-                            <Form className="d-flex">
-                                <Form.Control
-                                    type="search"
-                                    placeholder="Search"
-                                    className="me-2"
-                                    aria-label="Search"
-                                />
-                                <Button variant="outline-success">
-                                    Search
-                                </Button>
-                            </Form>
+                            <Nav className="justify-content-end flex-grow-1 pe-3">
+                                <Form className="d-flex">
+                                    <Navbar.Text className="px-3">
+                                        Search:
+                                    </Navbar.Text>
+                                    <Form.Control
+                                        value={searchValue}
+                                        type="text"
+                                        placeholder="Movie Title"
+                                        className=" mr-sm-2 me-1 searchInput"
+                                        onInput={(e) =>
+                                            searchCallback(e.target.value)
+                                        }
+                                    />
+                                </Form>
+
+                                <Link
+                                    to={"/watchlist"}
+                                    className="nav-link text-center"
+                                >
+                                    <span>Watchlist</span>{" "}
+                                    <PlayerIcon
+                                        width={15}
+                                        height={15}
+                                        fill={"#0A900A"}
+                                    />
+                                </Link>
+                            </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
                 </Container>

@@ -37,9 +37,13 @@ const MovieCard = ({ movieInfo }) => {
 
         setisAddedToWatchList(!isAddedToWatchList);
     };
-    useEffect(() => {
-        setisAddedToWatchList(isMovieOnWatchlist(movieInfo));
-    }, [user.watchlist]);
+    user
+        ? useEffect(() => {
+              user
+                  ? setisAddedToWatchList(isMovieOnWatchlist(movieInfo))
+                  : null;
+          }, [user.watchlist])
+        : null;
     return (
         <div
             className={"movieCard"}
@@ -47,20 +51,23 @@ const MovieCard = ({ movieInfo }) => {
             ref={cardRef}
         >
             <div className="DivPoster">
-                <button
-                    className={
-                        isAddedToWatchList
-                            ? "addButton activeButton"
-                            : "addButton"
-                    }
-                >
-                    <Plus
-                        width={30}
-                        height={30}
-                        fill={"#EEE"}
-                        onClick={() => onAddMovieClick(movieInfo)}
-                    />
-                </button>
+                {user ? (
+                    <button
+                        className={
+                            isAddedToWatchList
+                                ? "addButton activeButton"
+                                : "addButton"
+                        }
+                    >
+                        <Plus
+                            width={30}
+                            height={30}
+                            fill={"#EEE"}
+                            onClick={() => onAddMovieClick(movieInfo)}
+                        />
+                    </button>
+                ) : null}
+
                 <a
                     target="_blank"
                     href={`https://www.imdb.com/title/${movieInfo.imdbID}`}

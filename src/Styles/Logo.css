@@ -1,4 +1,4 @@
-.logo{
+.logo {
     font-family: "Special Gothic Condensed One", sans-serif;
     padding: 5px 10px;
     border-radius: 1em;
@@ -6,7 +6,6 @@
     color: white;
     user-select: none;
 }
-.Rental{
+.Rental {
     color: rgb(182, 23, 23) !important;
-    
 }

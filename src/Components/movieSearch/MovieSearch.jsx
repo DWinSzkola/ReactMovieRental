@@ -16,8 +16,6 @@ const MovieSearch = () => {
     const [movieData, setMovieData] = useState([]);
     const [search, setSearch] = useState("");
 
-    const { user } = useContext(UserContext);
-
     useEffect(() => {
         fetch(
             `http://www.omdbapi.com/?apikey=${apiKey}&s=${
@@ -34,9 +32,7 @@ const MovieSearch = () => {
             })
             .catch((err) => console.error(err));
     }, [search]);
-    useEffect(() => {
-        console.log(user.watchlist);
-    }, [user.watchlist]);
+
     return (
         <>
             <NavigationBar

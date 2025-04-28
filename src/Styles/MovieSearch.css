@@ -12,6 +12,10 @@
     background-size: auto;
     background-position: center;
 }
-.movieGrid{
+.movieGrid {
     margin: 20px;
+}
+.sign-in-link {
+    text-decoration: underline !important;
+    color: #58151c !important;
 }

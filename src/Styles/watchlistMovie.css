@@ -1,5 +1,6 @@
-.watchlistCard{
+.watchlistCard {
     background-color: rgb(39, 39, 39) !important;
-    
-   
+}
+.sign-in-link {
+    text-decoration: dashed !important;
 }
